@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel — AniVerse</title>
+    <link rel="icon" href="assets/icons/favicon.ico" />
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+    <link rel="stylesheet" href="css/loader.css" />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar glass-effect">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-film"></i>
+                <span>AniVerse Admin</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="#dashboard" class="active"><i class="fas fa-dashboard"></i> Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Admin Dashboard -->
+    <section class="admin-dashboard">
+        <div class="container">
+            <div class="admin-header">
+                <h1><i class="fas fa-cog"></i> Admin Dashboard</h1>
+                <button onclick="addNewAnime()" class="btn-primary">
+                    <i class="fas fa-plus"></i> Add New Anime
+                </button>
+            </div>
+
+            <!-- Stats -->
+            <div class="admin-stats">
+                <div class="stat-card glass-effect">
+                    <i class="fas fa-film"></i>
+                    <div class="stat-info">
+                        <h3>Total Anime</h3>
+                        <p id="totalAnime">0</p>
+                    </div>
+                </div>
+                <div class="stat-card glass-effect">
+                    <i class="fas fa-tags"></i>
+                    <div class="stat-info">
+                        <h3>Total Genres</h3>
+                        <p id="totalGenres">0</p>
+                    </div>
+                </div>
+                <div class="stat-card glass-effect">
+                    <i class="fas fa-eye"></i>
+                    <div class="stat-info">
+                        <h3>Total Views</h3>
+                        <p id="totalViews">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Anime Management -->
+            <div class="admin-table-wrapper glass-effect">
+                <h2><i class="fas fa-list"></i> Manage Anime</h2>
+                <div class="table-controls">
+                    <input type="text" id="adminSearch" placeholder="Search anime..." onkeyup="filterAdminTable()" />
+                </div>
+                <div class="table-responsive">
+                    <table id="animeTable">
+                        <thead>
+                            <tr>
+                                <th>Poster</th>
+                                <th>Title</th>
+                                <th>Genre</th>
+                                <th>Year</th>
+                                <th>Rating</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminTableBody">
+                            <!-- Injected by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add/Edit Modal -->
+    <div id="animeModal" class="modal">
+        <div class="modal-content glass-effect">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add New Anime</h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <form id="animeForm" onsubmit="saveAnime(event)">
+                <input type="hidden" id="editId" />
+                
+                <div class="form-group">
+                    <label>Anime Title *</label>
+                    <input type="text" id="title" required />
+                </div>
+                
+                <div class="form-group">
+                    <label>Japanese Title</label>
+                    <input type="text" id="japaneseTitle" />
+                </div>
+                
+                <div class="form-group">
+                    <label>Alternative Title</label>
+                    <input type="text" id="altTitle" />
+                </div>
+                
+                <div class="form-group">
+                    <label>Synopsis</label>
+                    <textarea id="synopsis" rows="4"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Genres (comma separated)</label>
+                    <input type="text" id="genres" placeholder="Action, Adventure, Fantasy" />
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select id="status">
+                            <option value="Ongoing">Ongoing</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Upcoming">Upcoming</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Release Year</label>
+                        <input type="number" id="year" min="1900" max="2026" />
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Total Episodes</label>
+                        <input type="number" id="episodes" min="0" />
+                    </div>
+                    <div class="form-group">
+                        <label>Episode Duration</label>
+                        <input type="text" id="duration" placeholder="24 min" />
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Studio</label>
+                    <input type="text" id="studio" />
+                </div>
+                
+                <div class="form-group">
+                    <label>Rating (1-10)</label>
+                    <input type="number" id="rating" min="0" max="10" step="0.1" />
+                </div>
+                
+                <div class="form-group">
+                    <label>Poster URL</label>
+                    <input type="url" id="poster" placeholder="https://example.com/poster.jpg" />
+                </div>
+                
+                <div class="form-group">
+                    <label>Languages/Dubs</label>
+                    <input type="text" id="languages" placeholder="Japanese, English, Hindi" />
+                </div>
+                
+                <h3>📺 Watch Links</h3>
+                <div id="watchLinksContainer"></div>
+                <button type="button" onclick="addWatchLink()" class="btn-secondary">
+                    <i class="fas fa-plus"></i> Add Watch Link
+                </button>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Save Anime</button>
+                    <button type="button" onclick="closeModal()" class="btn-secondary">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/data.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

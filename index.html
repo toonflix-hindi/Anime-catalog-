@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AniVerse — Premium Anime Catalogue</title>
+    <meta name="description" content="Discover your next favorite anime. Browse thousands of anime titles with complete information." />
+    <link rel="icon" href="assets/icons/favicon.ico" />
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/loader.css" />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <!-- 🌟 Navigation -->
+    <nav class="navbar glass-effect">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-film"></i>
+                <span>AniVerse</span>
+            </div>
+            <div class="nav-search">
+                <input type="text" id="searchInput" placeholder="Search anime... (Title, Japanese, Alternative)" />
+                <button onclick="performSearch()"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="#catalogue">Catalogue</a>
+                <a href="#genres">Genres</a>
+                <a href="admin.html" class="admin-link"><i class="fas fa-cog"></i> Admin</a>
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 🔥 Hero Section -->
+    <section class="hero glass-effect">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Discover Your Next <span class="gradient-text">Anime</span></h1>
+                <p>Explore thousands of anime titles, watch trailers, and find where to stream your favorites</p>
+                <div class="hero-buttons">
+                    <a href="#catalogue" class="btn-primary">Explore Now</a>
+                    <a href="#trending" class="btn-secondary">Trending</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🔥 Trending Anime -->
+    <section id="trending" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-fire"></i> Trending Now</h2>
+                <a href="#catalogue" class="view-all">View All →</a>
+            </div>
+            <div class="anime-grid" id="trendingGrid"></div>
+        </div>
+    </section>
+
+    <!-- ⭐ Popular Anime -->
+    <section id="popular" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-star"></i> Popular Anime</h2>
+                <a href="#catalogue" class="view-all">View All →</a>
+            </div>
+            <div class="anime-grid" id="popularGrid"></div>
+        </div>
+    </section>
+
+    <!-- 🆕 Recently Added -->
+    <section id="recent" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-clock"></i> Recently Added</h2>
+                <a href="#catalogue" class="view-all">View All →</a>
+            </div>
+            <div class="anime-grid" id="recentGrid"></div>
+        </div>
+    </section>
+
+    <!-- 📅 Latest Releases -->
+    <section id="releases" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-calendar-alt"></i> Latest Releases</h2>
+                <a href="#catalogue" class="view-all">View All →</a>
+            </div>
+            <div class="anime-grid" id="releaseGrid"></div>
+        </div>
+    </section>
+
+    <!-- 🎭 Genre Categories -->
+    <section id="genres" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-tags"></i> Explore by Genre</h2>
+            </div>
+            <div class="genre-grid" id="genreGrid"></div>
+        </div>
+    </section>
+
+    <!-- 📚 Full Catalogue -->
+    <section id="catalogue" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-book"></i> Complete Catalogue</h2>
+                <div class="catalogue-controls">
+                    <select id="sortBy" onchange="filterCatalogue()">
+                        <option value="az">A–Z</option>
+                        <option value="latest">Latest Added</option>
+                        <option value="popular">Most Popular</option>
+                        <option value="rating">Highest Rated</option>
+                        <option value="year">Release Year</option>
+                    </select>
+                    <select id="genreFilter" onchange="filterCatalogue()">
+                        <option value="all">All Genres</option>
+                    </select>
+                </div>
+            </div>
+            <div class="anime-grid" id="catalogueGrid"></div>
+            <div class="load-more">
+                <button onclick="loadMore()" class="btn-secondary">Load More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 📱 Footer -->
+    <footer class="glass-effect">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-film"></i>
+                    <div>
+                        <h3>AniVerse</h3>
+                        <p>Your premium anime catalogue</p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <a href="#" target="_blank"><i class="fab fa-telegram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-discord"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AniVerse. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
