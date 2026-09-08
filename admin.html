@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Panel — AniVerse</title>
-    <link rel="icon" href="assets/icons/favicon.ico" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>" />
     
-    <!-- CSS -->
+    <!-- ✅ FIXED CSS PATHS -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/admin.css" />
     <link rel="stylesheet" href="css/loader.css" />
@@ -86,7 +86,12 @@
                             </tr>
                         </thead>
                         <tbody id="adminTableBody">
-                            <!-- Injected by JavaScript -->
+                            <tr>
+                                <td colspan="6" style="text-align: center; padding: 40px; color: var(--text-secondary);">
+                                    <i class="fas fa-spinner fa-spin" style="font-size: 2rem; display: block; margin-bottom: 12px;"></i>
+                                    Loading...
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -106,22 +111,22 @@
                 
                 <div class="form-group">
                     <label>Anime Title *</label>
-                    <input type="text" id="title" required />
+                    <input type="text" id="title" required placeholder="Enter anime title" />
                 </div>
                 
                 <div class="form-group">
                     <label>Japanese Title</label>
-                    <input type="text" id="japaneseTitle" />
+                    <input type="text" id="japaneseTitle" placeholder="進撃の巨人" />
                 </div>
                 
                 <div class="form-group">
                     <label>Alternative Title</label>
-                    <input type="text" id="altTitle" />
+                    <input type="text" id="altTitle" placeholder="Shingeki no Kyojin" />
                 </div>
                 
                 <div class="form-group">
                     <label>Synopsis</label>
-                    <textarea id="synopsis" rows="4"></textarea>
+                    <textarea id="synopsis" rows="4" placeholder="Enter anime description..."></textarea>
                 </div>
                 
                 <div class="form-group">
@@ -140,14 +145,14 @@
                     </div>
                     <div class="form-group">
                         <label>Release Year</label>
-                        <input type="number" id="year" min="1900" max="2026" />
+                        <input type="number" id="year" min="1900" max="2026" placeholder="2024" />
                     </div>
                 </div>
                 
                 <div class="form-row">
                     <div class="form-group">
                         <label>Total Episodes</label>
-                        <input type="number" id="episodes" min="0" />
+                        <input type="number" id="episodes" min="0" placeholder="12" />
                     </div>
                     <div class="form-group">
                         <label>Episode Duration</label>
@@ -157,12 +162,12 @@
                 
                 <div class="form-group">
                     <label>Studio</label>
-                    <input type="text" id="studio" />
+                    <input type="text" id="studio" placeholder="MAPPA, Ufotable" />
                 </div>
                 
                 <div class="form-group">
                     <label>Rating (1-10)</label>
-                    <input type="number" id="rating" min="0" max="10" step="0.1" />
+                    <input type="number" id="rating" min="0" max="10" step="0.1" placeholder="8.5" />
                 </div>
                 
                 <div class="form-group">
@@ -176,8 +181,11 @@
                 </div>
                 
                 <h3>📺 Watch Links</h3>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 12px;">
+                    Add Telegram links or any streaming URLs
+                </p>
                 <div id="watchLinksContainer"></div>
-                <button type="button" onclick="addWatchLink()" class="btn-secondary">
+                <button type="button" onclick="addWatchLink()" class="btn-secondary" style="margin-top: 8px;">
                     <i class="fas fa-plus"></i> Add Watch Link
                 </button>
                 
@@ -189,7 +197,7 @@
         </div>
     </div>
 
-    <!-- JavaScript -->
+    <!-- ✅ FIXED JS PATHS -->
     <script src="js/data.js"></script>
     <script src="js/admin.js"></script>
 </body>
