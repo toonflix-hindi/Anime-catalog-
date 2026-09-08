@@ -32,7 +32,7 @@ function renderAnimeDetails(anime) {
             <div class="details-poster">
                 <img src="${anime.poster || 'assets/images/placeholder.jpg'}" 
                      alt="${anime.title}"
-                     onerror="this.src='assets/images/placeholder.jpg'">
+                     onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22450%22%3E%3Crect fill=%22%2314141f%22 width=%22300%22 height=%22450%22/%3E%3Ctext x=%22120%22 y=%22230%22 font-size=%2240%22 fill=%22%23666%22%3E🎬%3C/text%3E%3C/svg%3E'">
             </div>
             <div class="details-info">
                 <h1>${anime.title}</h1>
