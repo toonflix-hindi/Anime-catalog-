@@ -34,7 +34,7 @@ function renderAnimeCards(animeList, container, limit = 8) {
                 <img src="${anime.poster || 'assets/images/placeholder.jpg'}" 
                      alt="${anime.title}" 
                      loading="lazy"
-                     onerror="this.src='assets/images/placeholder.jpg'">
+                     onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22300%22%3E%3Crect fill=%22%2314141f%22 width=%22200%22 height=%22300%22/%3E%3Ctext x=%2250%22 y=%22150%22 font-size=%2230%22 fill=%22%23666%22%3E🎬%3C/text%3E%3C/svg%3E'">
                 <span class="anime-card-badge">${anime.status || 'Ongoing'}</span>
                 <span class="anime-card-rating">
                     <i class="fas fa-star"></i> ${anime.rating || 'N/A'}
