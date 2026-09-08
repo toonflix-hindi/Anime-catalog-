@@ -1,0 +1,38 @@
+# ========== OS FILES ==========
+.DS_Store
+Thumbs.db
+desktop.ini
+._*
+
+# ========== EDITOR FILES ==========
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-*
+
+# ========== TEMPORARY FILES ==========
+*.tmp
+*.temp
+*.log
+*.cache
+*.pid
+
+# ========== BACKUP FILES ==========
+*.bak
+*.backup
+*.old
+*.orig
+
+# ========== FIREBASE ==========
+firebase-debug.log
+.firebase/
+
+# ========== NODE (if used) ==========
+node_modules/
+package-lock.json
+
+# ========== ENVIRONMENT ==========
+.env
+.env.local
