@@ -1,6 +1,6 @@
 # 🎬 AniVerse — Premium Anime Catalogue
 
-A modern, responsive anime catalogue website built with pure HTML, CSS, and JavaScript. Perfect for hosting on GitHub Pages!
+A modern, responsive anime catalogue website built with pure HTML, CSS, and JavaScript.
 
 ## ✨ Features
 
@@ -19,4 +19,14 @@ A modern, responsive anime catalogue website built with pure HTML, CSS, and Java
 2. Open `index.html` in your browser
 3. Start exploring!
 
-## 📁 Project Structure
+## 🛠️ Admin Panel
+
+Access the admin panel at `/admin.html` to:
+- Add new anime with complete information
+- Edit existing anime
+- Delete anime
+- Add custom watch links (Telegram, etc.)
+
+## 📝 License
+
+MIT License
