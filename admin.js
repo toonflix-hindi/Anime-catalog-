@@ -32,7 +32,7 @@ function renderAdminTable(animeList) {
                 <img src="${anime.poster || 'assets/images/placeholder.jpg'}" 
                      alt="${anime.title}" 
                      style="width: 50px; height: 70px; object-fit: cover; border-radius: 8px;"
-                     onerror="this.src='assets/images/placeholder.jpg'">
+                     onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2250%22 height=%2270%22%3E%3Crect fill=%22%2314141f%22 width=%2250%22 height=%2270%22/%3E%3Ctext x=%2210%22 y=%2235%22 font-size=%2220%22 fill=%22%23666%22%3E🎬%3C/text%3E%3C/svg%3E'">
             </td>
             <td><strong>${anime.title}</strong></td>
             <td>${anime.genres?.join(', ') || 'N/A'}</td>
